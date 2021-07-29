@@ -1,6 +1,6 @@
 <?php
 //include proses
-include('./app/process.php');
+include('./vendor/app/process.php');
 
 $Db = new Proses();
 $data_warga = $Db->show();

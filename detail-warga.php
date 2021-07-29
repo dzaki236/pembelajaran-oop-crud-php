@@ -1,5 +1,5 @@
 <?php
-include "./app/process.php";
+include "./vendor/app/process.php";
 $datas = new Proses();
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
