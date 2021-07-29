@@ -5,6 +5,8 @@ include('./app/process.php');
 $Db = new Proses();
 $data_warga = $Db->show();
 // print_r($data_warga);
+
+// tambah data ke tabel warga
 if (isset($_POST['daftar'])) {
     // echo "Tombol Daftar Telah Di klik";
     $noktp = htmlentities(htmlspecialchars($_POST['no_ktp']));
@@ -13,7 +15,6 @@ if (isset($_POST['daftar'])) {
     $nohp = htmlentities(htmlspecialchars($_POST['no_hp']));
     $querysimpan = $Db->add_data($noktp, $nama, $alamat, $nohp);
     // print_r($_POST);
-    var_dump($querysimpan);
     if ($querysimpan) {
         $pesansimpan = "Data Tersimpan Ke Database";
         echo "<script>
@@ -26,7 +27,7 @@ if (isset($_POST['daftar'])) {
         </script>";
     }
 }
-
+// hapus data ke tabel warga
 if (isset($_GET['hapus'])) {
     //echo "Data dengan ID :".$_GET['hapus']."  Akan di hapus";
     $idwarga = $_GET['hapus'];
@@ -44,6 +45,28 @@ if (isset($_GET['hapus'])) {
     }
 }
 
+// edit data ke tabel warga
+if (isset($_POST['update'])) {
+    // echo "Tombol Update Telah Di klik";
+    $id = htmlentities(htmlspecialchars($_POST['id']));
+    $noktp = htmlentities(htmlspecialchars($_POST['no_ktp']));
+    $nama = htmlentities(htmlspecialchars($_POST['nama_lengkap']));
+    $alamat = htmlentities(htmlspecialchars($_POST['alamat_lengkap']));
+    $nohp = htmlentities(htmlspecialchars($_POST['no_hp']));
+    $querysimpan = $Db->update_data($id,$noktp, $nama, $alamat, $nohp);
+    // print_r($_POST);
+    if ($querysimpan) {
+        $pesansimpanupdate = "Data Berhasil Terupdate Ke Database";
+        echo "<script>
+        setTimeout(function(){document.location.href = './index.php'; }, 1000);
+        </script>";
+    } else {
+        $pesansimpanupdate = "Data Gagal Terupdate Ke Database";
+        echo "<script>
+        setTimeout(function(){document.location.href = './index.php'; }, 1000);
+        </script>";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,12 +88,21 @@ if (isset($_GET['hapus'])) {
                 <a href="form-daftar.php" class='btn btn-success'>Tambah Data Warga</a>
             </div>
             <?php
+            if (isset($_POST['update'])) {
+            ?>
+                <div class="alert alert-success"><?= $pesansimpanupdate; ?></div>
+            <?php
+            }
+            ?>
+
+            <?php
             if (isset($_POST['daftar'])) {
             ?>
                 <div class="alert alert-success"><?= $pesansimpan; ?></div>
             <?php
             }
             ?>
+            
             <?php
             if (isset($_GET['hapus'])) {
             ?>
@@ -108,11 +140,6 @@ if (isset($_GET['hapus'])) {
 
 </body>
 <!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
 <script>
     var form = document.querySelector('form');
 
@@ -121,5 +148,12 @@ if (isset($_GET['hapus'])) {
     }
     form.addEventListener('submit', handleForm);
 </script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+
 
 </html>
