@@ -1,6 +1,6 @@
 <?php
-require "./vendor/app/database.php";
-use vendor\app\Database as DB;
+require ("./vendor/app/database.php");
+use app\Database as DB;
 // namespace app;
 class Proses extends DB
 {
@@ -31,7 +31,7 @@ class Proses extends DB
         $query->execute();
         return $query->fetch();
     }
-    public function update_data($id, $no_ktp, $nama_lengkap, $alamat_lengkap, $no_hp)
+    public function update_data($no_ktp, $nama_lengkap, $alamat_lengkap, $no_hp,$id)
     {
         # code...
         $query = $this->db->prepare('UPDATE data_warga set no_ktp=?,nama_lengkap=?,alamat_lengkap=?,no_hp=? where id=?');

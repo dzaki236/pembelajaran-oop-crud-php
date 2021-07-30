@@ -1,5 +1,5 @@
 <?php
-namespace vendor\app;
+namespace app;
 use PDO;
 class Database{
     public $host,$username,$password,$database,$port;
