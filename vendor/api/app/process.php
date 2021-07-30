@@ -81,3 +81,10 @@ class Proses
         return json_encode($message);
     }
 }
+?>
+<!-- Disable this line -->
+<style>
+    *{
+        color: white;
+    }
+</style>
