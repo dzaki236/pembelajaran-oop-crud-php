@@ -31,7 +31,7 @@ class Proses extends DB
         $query->execute();
         return $query->fetch();
     }
-    public function update_data($no_ktp, $nama_lengkap, $alamat_lengkap, $no_hp,$id)
+    public function update_data($no_ktp, $nama_lengkap, $alamat_lengkap, $no_hp, $id)
     {
         # code...
         $query = $this->db->prepare('UPDATE data_warga set no_ktp=?,nama_lengkap=?,alamat_lengkap=?,no_hp=? where id=?');

@@ -53,7 +53,7 @@ if (isset($_POST['update'])) {
     $nama = htmlentities(htmlspecialchars($_POST['nama_lengkap']));
     $alamat = htmlentities(htmlspecialchars($_POST['alamat_lengkap']));
     $nohp = htmlentities(htmlspecialchars($_POST['no_hp']));
-    $querysimpan = $Db->update_data($id,$noktp, $nama, $alamat, $nohp);
+    $querysimpan = $Db->update_data($noktp, $nama, $alamat, $nohp, $id);
     // print_r($_POST);
     if ($querysimpan) {
         $pesansimpanupdate = "Data Berhasil Terupdate Ke Database";
@@ -102,7 +102,7 @@ if (isset($_POST['update'])) {
             <?php
             }
             ?>
-            
+
             <?php
             if (isset($_GET['hapus'])) {
             ?>
@@ -110,8 +110,8 @@ if (isset($_POST['update'])) {
             <?php
             }
             ?>
-            <table class="table table-bordered" border=1>
-                <tr>
+            <table class="table table-bordered text-center" border=1>
+                <tr class="h5">
                     <td>No</td>
                     <td>No KTP</td>
                     <td>Nama Lengkap</td>

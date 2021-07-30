@@ -82,9 +82,3 @@ class Proses
     }
 }
 ?>
-<!-- Disable this line -->
-<style>
-    *{
-        color: white;
-    }
-</style>
