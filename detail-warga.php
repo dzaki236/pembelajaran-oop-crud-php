@@ -2,7 +2,7 @@
 include "./vendor/app/process.php";
 $datas = new Proses();
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+    $id = htmlentities(htmlspecialchars($_GET['id']));
     $data_warga = $datas->get_by_id($id);
 }
 ?>
@@ -21,16 +21,16 @@ if (isset($_GET['id'])) {
 </head>
 
 <body>
-<div class="container-fluid">
+<div class="container">
         <div class="card">
             <div class="card-header">
-                <h3><span id="txt">Detail</span> Data Warga</h3> <div class="btn btn-warning" id="edit">Edit</div>
+                <h3><span id="txt">Detail</span> Data Warga</h3> <div class="btn btn-outline-warning" id="edit">Edit</div> <a href="index.php" class="btn">Kembali</a>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="text-align: right;">
                 <form method="post" action="index.php">
                     <div class="form-group row">
                         <label for="no_ktp" class="col-sm-2 col-form-label">No ktp :</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-9">
                         <input type="number" name="id" class="form-control" style="display: none;" id="no_ktp" value="<?=  $data_warga['id'];?>" required>
                         <input type="number" name="no_ktp" class="form-control" id="no_ktp" value="<?=  $data_warga['no_ktp'];?>" required>
                         </div>
@@ -38,21 +38,21 @@ if (isset($_GET['id'])) {
                     <br>
                     <div class="form-group row">
                         <label for="nama_lengkap" class="col-sm-2 col-form-label">Nama lengkap :</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-9">
                             <input type="text" name="nama_lengkap" class="form-control" id="nama_lengkap" value="<?=  $data_warga['nama_lengkap'];?>" required>
                         </div>
                     </div>
                     <br>
                     <div class="form-group row">
                         <label for="alamat_lengkap" class="col-sm-2 col-form-label">Alamat :</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-9">
                         <input type="text" class="form-control" name="alamat_lengkap" id="alamat_lengkap" cols="30" rows="10" value="<?= $data_warga['alamat_lengkap'];?>" required>
                         </div>
                     </div>
                     <br>
                     <div class="form-group row">
                         <label for="no_hp" class="col-sm-2 col-form-label">No Hp :</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-9">
                             <input type="number" name="no_hp" class="form-control" id="no_hp" value="<?=  $data_warga['no_hp'];?>" required>
                         </div>
                     </div>
@@ -89,11 +89,14 @@ if (isset($_GET['id'])) {
             $("#txt").text('Detail')
             $('input,textarea').prop("disabled", true);
             $('.btn-block').hide();
+            $('input,textarea').addClass('bg-white border-white');
+            $("#edit").text('Edit')
         }else{
             $("#txt").text('Ubah')
             $('input,textarea').prop("disabled", false);
             $('.btn-block').show();
             $('input,textarea').removeClass('bg-white border-white');
+            $("#edit").text('Batal Edit')
         }
   });  
 });
