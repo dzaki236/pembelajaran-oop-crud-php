@@ -2,7 +2,7 @@
 namespace app;
 use PDO;
 class Database{
-    public $host,$username,$password,$database,$port;
+    public $host,$username,$password,$db_name,$port;
 public function __construct()
 {
     $this->host = 'localhost';
