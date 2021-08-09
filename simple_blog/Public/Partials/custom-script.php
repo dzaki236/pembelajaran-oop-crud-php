@@ -12,6 +12,7 @@
 <script src="./Public/Assets/vendor/chart.js/Chart.min.js"></script>
 
 <!-- Page level custom scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="./Public/Assets/js/demo/chart-area-demo.js"></script>
 <script src="./Public/Assets/js/demo/chart-pie-demo.js"></script>
 <script type="text/javascript" charset="utf8" src="./Public/Assets/vendor/datatables/jquery.dataTables.min.js"></script>
