@@ -79,10 +79,9 @@ if (isset($_POST['update'])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
-<body>
-
+<body class="bg-light">
     <div class="container-fluid">
-        <div class="col-12">
+        <div class="card m-4 p-4">
             <div class="py-3">
                 <h2>Data Warga</h2>
                 <a href="form-daftar.php" class='btn btn-success'>Tambah Data Warga</a>
