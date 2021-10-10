@@ -1,23 +1,23 @@
 <?php
-include "../Models/Post.php";
+include "./Models/Post.php";
 use PDOException;
 use PDO;
-class Post{
-    public function __construct()
-    {
-        try {
-            //code...
-            $host = "localhost";
-            $dbname = "simple-blogs";
-            $username = "root";
-            $password = "root";
-            $this->db = new PDO("mysql:host={$host};dbname={$dbname}", $username, $password);
-        } catch (PDOException $msg) {
-            //throw $th;
-            return 'failed to connect'.$msg->getMessage();
-        }
-        // parent::__construct();
-    }
+class Post extends database{
+    // public function __construct()
+    // {
+    //     try {
+    //         //code...
+    //         $host = "localhost";
+    //         $dbname = "simple-blogs";
+    //         $username = "root";
+    //         $password = "root";
+    //         $this->db = new PDO("mysql:host={$host};dbname={$dbname}", $username, $password);
+    //     } catch (PDOException $msg) {
+    //         //throw $th;
+    //         return 'failed to connect'.$msg->getMessage();
+    //     }
+    //     // parent::__construct();
+    // }
     public function add_data($title,$content, $creator)
     {
         $data = $this->db->prepare("INSERT INTO simplepost (title,content,date_post,creator) VALUES (?, ?, now(), ?)");

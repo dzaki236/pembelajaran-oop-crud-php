@@ -12,7 +12,7 @@ class database{
             $username = "root";
             $password = "root";
             $this->db = new PDO("mysql:host={$host};dbname={$dbname}", $username, $password);
-        } catch (PDOException $msg) {
+        } catch (Exception $msg) {
             //throw $th;
             return 'failed to connect'.$msg->getMessage();
         }
